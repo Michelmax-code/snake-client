@@ -8,11 +8,15 @@ const connect = function() {
     port: 50542, }, () => {
     console.log("Successfully connected to game server");
     conn.write('Name: MAJ');
-    conn.write('Move: up');
+    
+    setTimeout(function() {
+      conn.write('Move: up')}, 3000);
+
     conn.on('data', (data) => {
       console.log('message from server', data);
     });
   });
+
   // interpret incoming data as text
   conn.setEncoding("utf8");
   const name = 'MAJ';
