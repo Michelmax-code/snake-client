@@ -8,25 +8,14 @@ const connect = function() {
     port: 50542, }, () => {
     console.log("Successfully connected to game server");
     conn.write('Name: MAJ');
-    
-    setTimeout(function() {
-      conn.write('Move: up')}, 1000);
-    setTimeout(function() {
-      conn.write('Move: left')}, 2000);
-    setTimeout(function() {
-      conn.write('Move: down')}, 3000);
-    setTimeout(function() {
-      conn.write('Move: down')}, 4000);
-    setTimeout(function() {
-      conn.write('Move: right')}, 5000);
-          
-
-
     conn.on('data', (data) => {
       console.log('message from server', data);
     });
   });
 
+  setInterval(function() {
+    conn.write('Move: up');
+    conn.write('Move: left')}, 500);
   // interpret incoming data as text
   conn.setEncoding("utf8");
   const name = 'MAJ';
